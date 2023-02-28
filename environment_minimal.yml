@@ -17,5 +17,5 @@ dependencies:
   - haversine
   - nbconvert
   - pyrosm 
-  - parquet
+  - pyarrow
 prefix: /opt/miniconda3/envs/bikedna_denmark

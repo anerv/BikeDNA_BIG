@@ -19,6 +19,9 @@ with open(r"../../config.yml") as file:
     osm_bicycle_infrastructure_type = parsed_yaml_file[
         "osm_bicycle_infrastructure_type"
     ]
+
+    bicycle_infrastructure_values = parsed_yaml_file["bicycle_infrastructure_values"]
+    
     osm_way_tags = parsed_yaml_file["osm_way_tags"]
 
     # Settings for reference data

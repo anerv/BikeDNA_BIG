@@ -1,4 +1,9 @@
-data/.DS_Store
-data/OSM/.DS_Store
-data/OSM/dk/.DS_Store
-scripts/.DS_Store
+*.osm.pbf
+*.parquet
+*.DS_Store
+src/__pycache__/simplification_functions.cpython-310.pyc
+src/__pycache__/__init__.cpython-310.pyc
+src/__pycache__/evaluation_functions.cpython-310.pyc
+src/__pycache__/graph_functions.cpython-310.pyc
+src/__pycache__/plotting_functions.cpython-310.pyc
+data/study_area_polygon/dk/study_area_polygon.gpkg

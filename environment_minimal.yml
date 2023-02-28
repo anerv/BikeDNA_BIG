@@ -1,0 +1,21 @@
+name: bikedna_denmark
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - networkx
+  - ipykernel
+  - momepy
+  - folium
+  - jupyterlab
+  - geopandas
+  - osmnx
+  - pyyaml
+  - contextily
+  - pandas
+  - matplotlib
+  - haversine
+  - nbconvert
+  - pyrosm 
+  - parquet
+prefix: /opt/miniconda3/envs/bikedna_denmark

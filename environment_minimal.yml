@@ -18,4 +18,5 @@ dependencies:
   - nbconvert
   - pyrosm 
   - pyarrow
+  - h3
 prefix: /opt/miniconda3/envs/bikedna_denmark

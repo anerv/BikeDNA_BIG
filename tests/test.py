@@ -18,25 +18,6 @@ from src import graph_functions as gf
 ###################### TESTS FOR EVALUATION FUNCTIONS #############################
 
 
-# Test for find pct difference
-# d={'col1':[10,20,105,40,100],'col2':[10,40,100,4,90]}
-# df = pd.DataFrame(d)
-
-# df['pct_difference'] = df.apply( lambda x: ef.find_pct_diff(x, 'col1', 'col2'), axis=1)
-
-# assert df['pct_difference'].values[0] == 0.00
-# assert df['pct_difference'].values[1] == -66.67
-# assert df['pct_difference'].values[2] == 4.88
-# assert df['pct_difference'].values[3] == 163.64
-# assert df['pct_difference'].values[4] == 10.53
-
-# d={'col1':[10,20,105,40,np.nan],'col2':[10,40,100,4,90]}
-# df = pd.DataFrame(d)
-
-# df['pct_difference'] = df.apply( lambda x: ef.find_pct_diff(x, 'col1', 'col2'), axis=1)
-# assert math.isnan(df.loc[4,'pct_difference']) == True
-
-
 # Test for create_grid_geometry
 ext = [(0, 0), (0, 10), (10, 10), (10, 0)]
 interior = [(4, 4), (6, 4), (6, 6), (4, 6)]

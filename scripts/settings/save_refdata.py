@@ -9,11 +9,11 @@ assert len(ref_nodes_simplified) == len(ref_nodes_simplified.nodeID.unique())
 assert "infrastructure_length" in ref_edges_simplified.columns
 assert "length" in ref_edges.columns
 
-ref_nodes.to_file(ref_nodes_fp, index=True, overwrite="yes")
+ref_nodes.to_file(ref_nodes_fp, index=True)
 
-ref_edges.to_file(ref_edges_fp, index=True, overwrite="yes")
+ref_edges.to_file(ref_edges_fp, index=True)
 
-ref_nodes_simplified.to_file(ref_nodes_simplified_fp, index=True, overwrite="yes")
+ref_nodes_simplified.to_file(ref_nodes_simplified_fp, index=True)
 
 cols = [
     "edge_id",
@@ -37,14 +37,14 @@ ref_edges_simplified[reference_id_col] = ref_edges_simplified[reference_id_col].
 ref_edges_simplified["osmid"] = ref_edges_simplified["osmid"].astype(str)
 ref_edges_simplified = ref_edges_simplified[keep_cols]
 
-ref_edges_simplified.to_file(ref_edges_simplified_fp, index=True, overwrite="yes")
+ref_edges_simplified.to_file(ref_edges_simplified_fp, index=True)
 
-ref_nodes_joined.to_file(ref_nodes_joined_fp, index=True, overwrite="yes")
+ref_nodes_joined.to_file(ref_nodes_joined_fp, index=True)
 
-ref_edges_joined.to_file(ref_edges_joined_fp, index=True, overwrite="yes")
+ref_edges_joined.to_file(ref_edges_joined_fp, index=True)
 
 ref_nodes_simp_joined.to_file(
-    ref_nodes_simplified_joined_fp, index=True, overwrite="yes"
+    ref_nodes_simplified_joined_fp, index=True 
 )
 
 cols = [
@@ -74,7 +74,7 @@ ref_edges_simp_joined["osmid"] = ref_edges_simp_joined["osmid"].astype(str)
 ref_edges_simp_joined = ref_edges_simp_joined[keep_cols]
 
 ref_edges_simp_joined.to_file(
-    ref_edges_simplified_joined_fp, index=True, overwrite="yes"
+    ref_edges_simplified_joined_fp, index=True 
 )
 
 

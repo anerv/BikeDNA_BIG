@@ -6,6 +6,7 @@
 *.gpkg
 *.graphml
 *.png
+*.gpkg-journal
 data/study_area_polygon/dk/study_area_polygon.gpkg
 
 src/__pycache__/simplification_functions.cpython-310.pyc
@@ -15,28 +16,8 @@ src/__pycache__/graph_functions.cpython-310.pyc
 src/__pycache__/plotting_functions.cpython-310.pyc
 src/__pycache__/matching_functions.cpython-310.pyc
 
-results/OSM/dk/maps_static/area_size_osm.png
-results/OSM/dk/maps_static/area_size_osm.png
-results/OSM/dk/maps_static/area_grid_osm.png
-results/OSM/dk/maps_static/area_size_osm.png
-results/OSM/dk/plots/edge_global_bidirectional.png
-results/OSM/dk/plots/edge_global_infrastructuretype.png
-results/OSM/dk/plots/edge_global_mappingtype.png
-results/OSM/dk/plots/edge_global.png
-results/OSM/dk/maps_static/area_network_osm.png
 
-results/OSM/dk/data/largest_connected_component.gpkg-journal
-results/OSM/dk/maps_interactive/component_gaps_10_osm.html
-results/OSM/dk/maps_interactive/danglingmap_osm.html
-results/OSM/dk/maps_interactive/taggingcombinations_osm.html
-results/OSM/dk/maps_interactive/taggingtypes_osm.html
-results/OSM/dk/maps_interactive/tagsincompatible_osm.html
-results/OSM/dk/maps_interactive/underovershoots_3_3_osm.html
-results/OSM/dk/data/component_gaps_edges_10.csv
-results/OSM/dk/data/overshoot_edges_3.csv
-results/OSM/dk/data/undershoot_nodes_3.csv
-results/OSM/dk/maps_static/titleimage.svg
-results/OSM/dk/maps_interactive/taggingcombinations_osm.html
-results/OSM/dk/data/incompatible_tags.csv
-results/OSM/dk/data/stats_area.csv
-results/OSM/dk/data/stats_tags.csv
+results/OSM/dk/maps_static/*
+results/OSM/dk/plots/*
+results/OSM/dk/maps_interactive/*
+results/OSM/dk/data/*

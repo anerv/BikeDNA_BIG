@@ -9,11 +9,11 @@ assert len(ref_nodes_simplified) == len(ref_nodes_simplified.nodeID.unique())
 assert "infrastructure_length" in ref_edges_simplified.columns
 assert "length" in ref_edges.columns
 
-ref_nodes.to_file(ref_nodes_fp, index=True)
+ref_nodes.to_parquet(ref_nodes_fp, index=True)
 
-ref_edges.to_file(ref_edges_fp, index=True)
+ref_edges.to_parquet(ref_edges_fp, index=True)
 
-ref_nodes_simplified.to_file(ref_nodes_simplified_fp, index=True)
+ref_nodes_simplified.to_parquet(ref_nodes_simplified_fp, index=True)
 
 cols = [
     "edge_id",
@@ -37,13 +37,13 @@ ref_edges_simplified[reference_id_col] = ref_edges_simplified[reference_id_col].
 ref_edges_simplified["osmid"] = ref_edges_simplified["osmid"].astype(str)
 ref_edges_simplified = ref_edges_simplified[keep_cols]
 
-ref_edges_simplified.to_file(ref_edges_simplified_fp, index=True)
+ref_edges_simplified.to_parquet(ref_edges_simplified_fp, index=True)
 
-ref_nodes_joined.to_file(ref_nodes_joined_fp, index=True)
+ref_nodes_joined.to_parquet(ref_nodes_joined_fp, index=True)
 
-ref_edges_joined.to_file(ref_edges_joined_fp, index=True)
+ref_edges_joined.to_parquet(ref_edges_joined_fp, index=True)
 
-ref_nodes_simp_joined.to_file(
+ref_nodes_simp_joined.to_parquet(
     ref_nodes_simplified_joined_fp, index=True 
 )
 
@@ -73,7 +73,7 @@ ref_edges_simp_joined[reference_id_col] = ref_edges_simp_joined[
 ref_edges_simp_joined["osmid"] = ref_edges_simp_joined["osmid"].astype(str)
 ref_edges_simp_joined = ref_edges_simp_joined[keep_cols]
 
-ref_edges_simp_joined.to_file(
+ref_edges_simp_joined.to_parquet(
     ref_edges_simplified_joined_fp, index=True 
 )
 
@@ -86,5 +86,5 @@ ox.save_graphml(graph_ref_simplified, ref_graph_simplified_fp)
 print(f"{reference_name} networks saved successfully!")
 
 # Export grid
-grid.to_file(ref_grid_fp)
+grid.to_parquet(ref_grid_fp)
 print("Reference grid saved successfully!")

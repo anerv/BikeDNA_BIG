@@ -191,11 +191,11 @@ bidirectional: False
 # For protected, unprotected or mixed (protected on one side, unprotected on the other side) specify the query defining the type
 ref_bicycle_infrastructure_type: 
   protected:
-    - "vejklasse ==  'Cykelsti langs vej'"
+    - "vejkategori ==  'Cykelsti langs vej'"
   unprotected:
-    - "vejklasse == 'Cykelbane langs vej'"
+    - "vejkategori == 'Cykelbane langs vej'"
   # mixed: # Only provide mixed query if relevant
   #   - ""
 
 # Specify the column name (string) of the column in the reference data with the unique ID for each row/feature.
-reference_id_col: 'fot_id'
+reference_id_col: "id_lokalid"

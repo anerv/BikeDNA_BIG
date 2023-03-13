@@ -40,4 +40,4 @@ with open(r"../../config.yml") as file:
 study_area_poly_fp = (
     f"../../data/study_area_polygon/{study_area}/study_area_polygon.gpkg"
 )
-reference_fp = f"../../data/reference/{study_area}/raw/reference_data.gpkg"
+reference_fp = f"../../data/reference/{study_area}/processed/reference_data.parquet"

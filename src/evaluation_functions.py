@@ -589,7 +589,11 @@ def compute_alpha_beta_gamma(edges, nodes, G, planar=True):
     assert edges.geom_type.unique()[0] == "LineString"
     assert nodes.geom_type.unique()[0] == "Point"
 
-    p = nx.number_connected_components(G)
+    if nx.is_directed(G):
+        p = nx.number_connected_components(ox.get_undirected(G))
+
+    else:
+        p = nx.number_connected_components(G)
 
     if planar:
         alpha = (e - v + p) / (2 * v - 5)
@@ -613,6 +617,7 @@ def compute_alpha_beta_gamma(edges, nodes, G, planar=True):
     assert gamma >= 0 and gamma <= 1
 
     return alpha, beta, gamma
+
 
 
 def compute_edge_node_ratio(data_tuple):

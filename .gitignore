@@ -5,8 +5,8 @@
 *.pyc
 *.gpkg
 *.graphml
-*.png
 *.gpkg-journal
+
 data/study_area_polygon/dk/study_area_polygon.gpkg
 
 src/__pycache__/simplification_functions.cpython-310.pyc
@@ -26,3 +26,8 @@ results/REFERENCE/dk/maps_static/*
 results/REFERENCE/dk/plots/*
 results/REFERENCE/dk/maps_interactive/*
 results/REFERENCE/dk/data/*
+
+results/COMPARE/dk/maps_interactive/*
+results/COMPARE/dk/maps_static/*
+results/COMPARE/dk/data/*
+results/COMPARE/dk/plots/*

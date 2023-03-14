@@ -21,3 +21,8 @@ results/OSM/dk/maps_static/*
 results/OSM/dk/plots/*
 results/OSM/dk/maps_interactive/*
 results/OSM/dk/data/*
+
+results/REFERENCE/dk/maps_static/*
+results/REFERENCE/dk/plots/*
+results/REFERENCE/dk/maps_interactive/*
+results/REFERENCE/dk/data/*

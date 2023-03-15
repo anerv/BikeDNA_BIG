@@ -2,6 +2,8 @@
 This script contains files used for the feature matching of two different datasets of the same road network.
 
 """
+import os
+os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 import numpy as np
 import pandas as pd

@@ -8,7 +8,7 @@ conda create -n bikedna --strict-channel-priority osmnx pyrosm geopandas pandas 
 conda create -n bikedna_min --strict-channel-priority geopandas osmnx networkx pandas pyarrow h3-py  
 
 
-conda create -n bikedna_min --strict-channel-priority geopandas pandas pyarrow
+conda create -n bikedna_min --strict-channel-priority geopandas pyarrow
 
 
 ### Upload data:
@@ -18,13 +18,9 @@ cd bikedna
 
 scp -r /Users/anev/Dropbox/ITU/repositories/bikedna_denmark/hpc anev@hpc.itu.dk:/home/anev/bikedna
 
-scp -r /Users/anev/'OneDrive - ITU/RESEARCH'/NA_data_processing/src 
-scp /Users/anev/'OneDrive - ITU/RESEARCH'/NA_data_processing/setup.py
-scp config.yml /home/anev/na_data
-
 eval "$(conda shell.bash hook)"
 
-conda activate bike_dna_min
+conda activate bikedna_min
 
 ssh-copy-id -i ~/.ssh/id_rsa.pub anev@hpc.itu.dk
 

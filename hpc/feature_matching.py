@@ -1,4 +1,4 @@
-#%%
+
 # Load libraries, settings and data
 
 import os.path
@@ -58,7 +58,6 @@ ref_segments.set_crs(study_crs, inplace=True)
 ref_segments.rename(columns={"seg_id": "seg_id_ref"}, inplace=True)
 ref_segments.dropna(subset=["geometry"], inplace=True)
 
-#%%
 buffer_matches = match_func.overlay_buffer(
     reference_data=ref_segments,
     osm_data=osm_segments,
@@ -67,7 +66,7 @@ buffer_matches = match_func.overlay_buffer(
     dist=buffer_dist,
 )
 
-#%%
+
 # final matches
 segment_matches = match_func.find_matches_from_buffer(
     buffer_matches=buffer_matches,

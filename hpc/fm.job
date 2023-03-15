@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=loadosm       # Job name
+#SBATCH --job-name=fm       # Job name
 #SBATCH --output=../outs/job.%j.out      # Name of output file (%j expands to jobId)
 #SBATCH --error=../outs/job.%j.err
 #SBATCH --mem=40000

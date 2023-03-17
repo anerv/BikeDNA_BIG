@@ -22,6 +22,7 @@ osm_grid = gpd.read_parquet("data/osm_grid.parquet")
 grid = pd.merge(left=osm_grid, right=ref_grid, left_index=True, right_index=True, suffixes=('_osm','_ref'))
 assert len(grid) == len(osm_grid) == len(ref_grid)
 grid['grid_id'] = grid.grid_id_osm
+
 # settings
 study_crs = "EPSG:25832"
 study_area = 'dk'

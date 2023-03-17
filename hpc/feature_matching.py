@@ -1,4 +1,4 @@
-
+#%%
 # Load libraries, settings and data
 
 import os.path
@@ -21,12 +21,12 @@ osm_grid = gpd.read_parquet("data/osm_grid.parquet")
 
 grid = pd.merge(left=osm_grid, right=ref_grid, left_index=True, right_index=True, suffixes=('_osm','_ref'))
 assert len(grid) == len(osm_grid) == len(ref_grid)
-
+grid['grid_id'] = grid.grid_id_osm
 # settings
 study_crs = "EPSG:25832"
 study_area = 'dk'
 reference_name = 'GeoDanmark'
-
+#%%
 
 # Define feature matching user settings
 segment_length = 10  # The shorter the segments, the longer the matching process will take. For cities with a gridded street network with streets as straight lines, longer segments will usually work fine
@@ -38,7 +38,6 @@ for s in [segment_length, buffer_dist, hausdorff_threshold, angular_threshold]:
     assert isinstance(s, int) or isinstance(s, float), print(
         "Settings must be integer or float values!"
     )
-
 
 osm_segments = match_func.create_segment_gdf(
     osm_edges_simplified, segment_length=segment_length
@@ -58,6 +57,8 @@ ref_segments.set_crs(study_crs, inplace=True)
 ref_segments.rename(columns={"seg_id": "seg_id_ref"}, inplace=True)
 ref_segments.dropna(subset=["geometry"], inplace=True)
 
+print('Segments!')
+
 buffer_matches = match_func.overlay_buffer(
     reference_data=ref_segments,
     osm_data=osm_segments,
@@ -66,6 +67,7 @@ buffer_matches = match_func.overlay_buffer(
     dist=buffer_dist,
 )
 
+print('Buffer matches!')
 
 # final matches
 segment_matches = match_func.find_matches_from_buffer(
@@ -76,7 +78,7 @@ segment_matches = match_func.find_matches_from_buffer(
     hausdorff_threshold=hausdorff_threshold,
 )
 
-matches_fp = "results/segment_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+matches_fp = f"results/segment_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
 with open(matches_fp, "wb") as f:
     pickle.dump(segment_matches, f)

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Load OSM network data
+# run feature matching
 sbatch fm.job

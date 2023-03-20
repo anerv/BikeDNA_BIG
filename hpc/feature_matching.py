@@ -16,7 +16,6 @@ import matching_functions as match_func
 #path = "/home/anev/bikedna/hpc/"
 path = os.path.abspath(os.getcwd())
 
-
 ref_edges_simplified = gpd.read_parquet(path+"/data/ref_edges_simplified.parquet")
 ref_edges_simp_joined = gpd.read_parquet(path+"/data/ref_edges_simplified_joined.parquet")
 osm_edges_simplified = gpd.read_parquet(path+"/data/osm_edges_simplified.parquet")
@@ -106,6 +105,26 @@ osm_matched_ids, osm_undec = match_func.summarize_feature_matches(
 ref_matched_ids, ref_undec = match_func.summarize_feature_matches(
     ref_segments, segment_matches, "seg_id_ref", "edge_id", osm=False
 )
+
+osm_matched_ids_fp = path + f"osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+ref_matched_ids_fp = path + f"osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+
+osm_undec_ids_fp = path + f"ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+ref_undec_ids_fp = path + f"ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+
+with open(osm_matched_ids_fp, "wb") as fp:   
+    pickle.dump(osm_matched_ids, fp) 
+
+with open(ref_matched_ids_fp, "wb") as fp:   
+    pickle.dump(ref_matched_ids, fp) 
+
+with open(osm_undec_ids_fp, "wb") as fp:   
+    pickle.dump(osm_undec, fp) 
+
+with open(ref_undec_ids_fp, "wb") as fp:   
+    pickle.dump(ref_undec, fp)
+
+print("Summary of segments matches completed. Ids of matched features have been saved.")
 
 protection_level_comparison = match_func.update_osm(
     osm_segments,

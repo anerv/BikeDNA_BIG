@@ -1,0 +1,10 @@
+name: feature_matching
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - geopandas
+  - pandas
+  - pyarrow
+
+prefix: /opt/miniconda3/envs/feature_matching

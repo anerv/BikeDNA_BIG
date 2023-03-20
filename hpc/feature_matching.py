@@ -1,5 +1,7 @@
-#%%
+
 # Load libraries, settings and data
+
+debug = False
 
 import os.path
 import pickle
@@ -11,23 +13,27 @@ import pandas as pd
 import evaluation_functions as eval_func
 import matching_functions as match_func
 
-ref_edges_simplified = gpd.read_parquet("data/ref_edges_simplified.parquet")
-ref_edges_simp_joined = gpd.read_parquet("data/ref_edges_simplified_joined.parquet")
-osm_edges_simplified = gpd.read_parquet("data/ref_edges_simplified.parquet")
-osm_edges_simp_joined = gpd.read_parquet("data/ref_edges_simplified_joined.parquet")
+#path = "/home/anev/bikedna/hpc/"
+path = os.path.abspath(os.getcwd())
 
-ref_grid = gpd.read_parquet("data/ref_grid.parquet")
-osm_grid = gpd.read_parquet("data/osm_grid.parquet")
 
-grid = pd.merge(left=osm_grid, right=ref_grid, left_index=True, right_index=True, suffixes=('_osm','_ref'))
+ref_edges_simplified = gpd.read_parquet(path+"/data/ref_edges_simplified.parquet")
+ref_edges_simp_joined = gpd.read_parquet(path+"/data/ref_edges_simplified_joined.parquet")
+osm_edges_simplified = gpd.read_parquet(path+"/data/osm_edges_simplified.parquet")
+osm_edges_simp_joined = gpd.read_parquet(path+"/data/osm_edges_simplified_joined.parquet")
+
+ref_grid = gpd.read_parquet(path+"/data/ref_grid.parquet")
+osm_grid = gpd.read_parquet(path+"/data/osm_grid.parquet")
+
+grid = pd.merge(left=osm_grid, right=ref_grid.drop('geometry',axis=1), left_index=True, right_index=True, suffixes=('_osm','_ref'))
 assert len(grid) == len(osm_grid) == len(ref_grid)
 grid['grid_id'] = grid.grid_id_osm
+
 
 # settings
 study_crs = "EPSG:25832"
 study_area = 'dk'
 reference_name = 'GeoDanmark'
-#%%
 
 # Define feature matching user settings
 segment_length = 10  # The shorter the segments, the longer the matching process will take. For cities with a gridded street network with streets as straight lines, longer segments will usually work fine
@@ -58,7 +64,11 @@ ref_segments.set_crs(study_crs, inplace=True)
 ref_segments.rename(columns={"seg_id": "seg_id_ref"}, inplace=True)
 ref_segments.dropna(subset=["geometry"], inplace=True)
 
-print('Segments!')
+print('Segments created!')
+
+osm_segments.to_parquet(path+"/results/osm_segments_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.parquet")
+ref_segments.to_parquet(path+"/results/ref_segments_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.parquet")
+
 
 buffer_matches = match_func.overlay_buffer(
     reference_data=ref_segments,
@@ -68,7 +78,9 @@ buffer_matches = match_func.overlay_buffer(
     dist=buffer_dist,
 )
 
-print('Buffer matches!')
+print('Buffer matches found!')
+
+buffer_matches.to_parquet(path+"/results/buffer_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.parquet")
 
 # final matches
 segment_matches = match_func.find_matches_from_buffer(
@@ -79,11 +91,12 @@ segment_matches = match_func.find_matches_from_buffer(
     hausdorff_threshold=hausdorff_threshold,
 )
 
-matches_fp = f"results/segment_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+matches_fp = path+f"/results/segment_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
 with open(matches_fp, "wb") as f:
     pickle.dump(segment_matches, f)
 
+print("Segment matches found!")
 
 # Summarize feature matching results
 osm_matched_ids, osm_undec = match_func.summarize_feature_matches(
@@ -187,4 +200,4 @@ grid["pct_unmatched_ref"] = (
 grid.loc[grid.pct_matched_osm == 100, "pct_unmatched_osm"] = 0
 grid.loc[grid.pct_matched_ref == 100, "pct_unmatched_ref"] = 0
 
-grid.to_parquet("results/grid_fm.parquet")
+grid.to_parquet(path+ f"/results/grid_results_feature_matching_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.parquet")

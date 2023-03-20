@@ -63,6 +63,8 @@ ref_results_inter_maps_fp = f"../../results/REFERENCE/{study_area}/maps_interact
 ref_results_plots_fp = f"../../results/REFERENCE/{study_area}/plots/"
 ref_results_data_fp = f"../../results/REFERENCE/{study_area}/data/"
 
+# COMPARE DATA FILEPATH
+compare_processed_fp = f"../../data/COMPARE/{study_area}/processed/"
 
 # COMPARE RESULTS FILEPATHS
 compare_results_fp = f"../../results/REFERENCE/{study_area}/"

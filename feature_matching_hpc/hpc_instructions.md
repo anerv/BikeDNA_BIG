@@ -1,4 +1,6 @@
-# Instructions for running the feature matching on a High Performance Cluster
+# Instructions for running the feature matching on a High Performance Computing Cluster
+
+These instructions assumes a HPC using [SLURM](<https://slurm.schedmd.com/overview.html>) scheduling.
 
 Adapt instructions to your own HPC as necessary.
 
@@ -19,17 +21,42 @@ eval "$(conda shell.bash hook)"
 conda env create --file=environment_minimal.yml
 ```
 
-### Upload data
+## Create subfolders and copy files to folder
 
-scp -r /Users/anev/Dropbox/ITU/repositories/bikedna_denmark/bikedna_hpc anev@hpc.itu.dk:/home/anev
+- Navigate to the `feature_matching_hpc` folder in a terminal and run:
+
+```
+python setup_hpc_folders.py
+```
+
+## Upload files
+
+Use for example scp to upload the `feature_matching_hpc` folder to the HPC:
+
+```
+scp -r /Users/myuser/../bikedna_denmark/feature_matching_hpc user@host:/home/user
+```
+
+Navigate to the `feature_matching_hpc` folder on the HPC and run:
+
+```
+sbatch scripts/fm.job
+```
+
+Once the job is completed:
+
+- download the data in the `results` folder and place them in `bikedna_denmark/feature_matching_hpc/results/` on your own machine
+- navigate to the `feature_matching_hpc` on your own machine and run:
+
+```
+python export_hpc_results.py
+```
+
+- run the `3b_extrinsic_analyis_feature_matching` notebook as normal to summarize results, analyze local success rates, produce plots, etc.
+
+### TODO
 
 - create new hpc folder and upload hpc folder to hpc
 - install pyaml in env
 - test run
 - try export
-
-- create conda env on cluster using minimam env file
-- navigate to hpcbikedna folder and run setup_hpc_folders.py
-- upload hpcbikedna folder, navigate to it and run sbatch scripts/fm.job
-- once completeded, download data in results folder to bikednahpc results folder and run export_hpc_results.py
-- use the 3b notebook to inspect results, export summmary results, make plots etc.

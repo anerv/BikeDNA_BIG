@@ -6,5 +6,6 @@ dependencies:
   - geopandas
   - pandas
   - pyarrow
+  - pyyaml
 
 prefix: /opt/miniconda3/envs/feature_matching

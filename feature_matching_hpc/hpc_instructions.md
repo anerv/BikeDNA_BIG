@@ -6,7 +6,7 @@ Adapt instructions to your own HPC as necessary.
 
 ## Setting up the conda environment
 
-```
+```bash
 module load Anaconda3
 eval "$(conda shell.bash hook)"
 conda config --prepend channels conda-forge
@@ -36,6 +36,7 @@ Use for example scp to upload the `feature_matching_hpc` folder to the HPC:
 ```bash
 scp -r /Users/myuser/../bikedna_denmark/feature_matching_hpc user@host:/home/user
 ```
+<!-- scp -r /Users/anev/Dropbox/ITU/repositories/bikedna_denmark/feature_matching_hpc anev@hpc.itu.dk:/home/anev -->
 
 Navigate to the `feature_matching_hpc` folder on the HPC and run:
 

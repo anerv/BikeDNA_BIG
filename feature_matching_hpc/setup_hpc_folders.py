@@ -29,7 +29,6 @@ copy_files = {
     f"../data/OSM/{study_area}/processed/osm_edges_simplified.parquet":f"{study_area}/data/osm_edges_simplified.parquet",
     f"../data/OSM/{study_area}/processed/osm_edges_simplified_joined.parquet":f"{study_area}/data/osm_edges_simplified_joined.parquet",
     "../src/matching_functions.py":"scripts/src/matching_functions.py",
-    #"../src/evaluation_functions.py":"evaluation_functions.py",
     "../config.yml":"config.yml"
 }
     

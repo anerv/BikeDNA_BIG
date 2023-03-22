@@ -1,4 +1,3 @@
-#%%
 # Load libraries, settings and data
 
 debug = False
@@ -33,7 +32,7 @@ osm_grid = gpd.read_parquet(path+"/data/osm_grid.parquet")
 grid = pd.merge(left=osm_grid, right=ref_grid.drop('geometry',axis=1), left_index=True, right_index=True, suffixes=('_osm','_ref'))
 assert len(grid) == len(osm_grid) == len(ref_grid)
 grid['grid_id'] = grid.grid_id_osm
-#%%
+
 
 # Define feature matching user settings
 segment_length = 10  # The shorter the segments, the longer the matching process will take. For cities with a gridded street network with streets as straight lines, longer segments will usually work fine
@@ -125,98 +124,3 @@ with open(ref_undec_ids_fp, "wb") as fp:
     pickle.dump(ref_undec, fp)
 
 print("Summary of segments matches completed. Ids of matched features have been saved.")
-
-# protection_level_comparison = match_func.update_osm(
-#     osm_segments,
-#     osm_edges_simplified,
-#     segment_matches,
-#     "protected",
-#     "edge_id",
-#     "seg_id",
-# )
-
-# osm_matched = osm_edges_simp_joined.loc[
-#     osm_edges_simp_joined.edge_id.isin(osm_matched_ids)
-# ]
-
-# ref_matched = ref_edges_simp_joined.loc[
-#     ref_edges_simp_joined.edge_id.isin(ref_matched_ids)
-# ]
-
-# # Count features in each grid cell
-# data = [osm_matched, ref_matched]
-# labels = ["osm_matched", "ref_matched"]
-
-# for data, label in zip(data, labels):
-
-#     df = eval_func.count_features_in_grid(data, label)
-
-#     grid = eval_func.merge_results(grid, df, "left")
-
-#     df = eval_func.length_of_features_in_grid(data, label)
-
-#     grid = eval_func.merge_results(grid, df, "left")
-
-# # Get length of features in each grid cell
-# data = [osm_edges_simp_joined, ref_edges_simp_joined]
-# labels = ["osm", "ref"]
-
-# for data, label in zip(data, labels):
-
-#     df = eval_func.length_of_features_in_grid(data, label)
-
-#     grid = eval_func.merge_results(grid, df, "left")
-
-# # Compute pct matched
-# grid["pct_matched_osm"] = (
-#     grid["count_osm_matched"] / grid["count_osm_simplified_edges"] * 100
-# )
-# grid["pct_matched_ref"] = (
-#     grid["count_ref_matched"] / grid["count_ref_simplified_edges"] * 100
-# )
-
-# # Compute unmatched
-# grid.loc[
-#     (grid.count_osm_simplified_edges.notnull()) & (grid.count_osm_matched.isnull()),
-#     ["count_osm_matched"],
-# ] = 0
-# grid.loc[
-#     (grid.count_ref_simplified_edges.notnull()) & (grid.count_ref_matched.isnull()),
-#     ["count_ref_matched"],
-# ] = 0
-# grid.loc[
-#     (grid.count_osm_simplified_edges.notnull()) & (grid.pct_matched_osm.isnull()),
-#     ["pct_matched_osm"],
-# ] = 0
-# grid.loc[
-#     (grid.count_ref_simplified_edges.notnull()) & (grid.pct_matched_ref.isnull()),
-#     ["pct_matched_ref"],
-# ] = 0
-
-# grid.loc[
-#     (grid.count_osm_simplified_edges.notnull()) & (grid.length_osm_matched.isnull()),
-#     ["length_osm_matched"],
-# ] = 0
-# grid.loc[
-#     (grid.count_ref_simplified_edges.notnull()) & (grid.length_ref_matched.isnull()),
-#     ["length_ref_matched"],
-# ] = 0
-
-# grid["count_osm_unmatched"] = grid.count_osm_simplified_edges - grid.count_osm_matched
-# grid["count_ref_unmatched"] = grid.count_ref_simplified_edges - grid.count_ref_matched
-
-# grid["length_osm_unmatched"] = grid.length_osm - grid.length_osm_matched
-# grid["length_ref_unmatched"] = grid.length_ref - grid.length_ref_matched
-
-# # Compute pct unmatched
-# grid["pct_unmatched_osm"] = (
-#     grid["count_osm_unmatched"] / grid["count_osm_simplified_edges"] * 100
-# )
-# grid["pct_unmatched_ref"] = (
-#     grid["count_ref_unmatched"] / grid["count_ref_simplified_edges"] * 100
-# )
-
-# grid.loc[grid.pct_matched_osm == 100, "pct_unmatched_osm"] = 0
-# grid.loc[grid.pct_matched_ref == 100, "pct_unmatched_ref"] = 0
-
-# grid.to_parquet(path+ f"/results/grid_results_feature_matching_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.parquet")

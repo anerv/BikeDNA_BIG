@@ -48,7 +48,7 @@ Once the job is completed:
 
 - download the data in the `results` folder and place them in `bikedna_denmark/feature_matching_hpc/results/` on your own machine
 - download the data in the `processed` folder and place them in `bikedna_denmark/feature_matching_hpc/processed/` on your own machine
-- navigate to the folder `feature_matching_hpc` on your own machine and run:
+- navigate to the folder `feature_matching_hpc` on your own machine, activate the conda environment, and run:
 
 ```bash
 python export_hpc_results.py

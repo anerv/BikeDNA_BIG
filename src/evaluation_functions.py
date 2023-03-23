@@ -39,7 +39,7 @@ def create_h3_grid(polygon_gdf, hex_resolution, crs, buffer_dist):
 
     grid.set_crs("4326",inplace=True).to_crs(crs, inplace=True)
 
-    grid["grid_id"] = grid.index
+    grid["grid_id"] = grid.hex_id
 
     return grid
 

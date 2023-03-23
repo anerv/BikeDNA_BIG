@@ -105,11 +105,11 @@ ref_matched_ids, ref_undec = match_func.summarize_feature_matches(
     ref_segments, segment_matches, "seg_id_ref", "edge_id", osm=False
 )
 
-osm_matched_ids_fp = path + f"/osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
-ref_matched_ids_fp = path + f"/ref_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+osm_matched_ids_fp = path + f"/results/osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+ref_matched_ids_fp = path + f"/results/ref_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
-osm_undec_ids_fp = path + f"/osm_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
-ref_undec_ids_fp = path + f"/ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+osm_undec_ids_fp = path + f"/results/osm_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+ref_undec_ids_fp = path + f"/results/ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
 with open(osm_matched_ids_fp, "wb") as fp:   
     pickle.dump(osm_matched_ids, fp) 

@@ -1,4 +1,4 @@
-### FUNCTIONS FOR FOLIUM PLOTTING
+### FUNCTIONS FOR PLOTTING
 import folium
 import geopandas as gpd
 import matplotlib as mpl
@@ -12,11 +12,9 @@ from IPython.display import Image, HTML, display
 exec(open("../settings/yaml_variables.py").read())
 exec(open("../settings/plotting.py").read())
 exec(open("../settings/tiledict.py").read())
-exec(open("../settings/yaml_variables.py").read())
 
 
 def make_foliumplot(feature_groups, layers_dict, center_gdf, center_crs, attr=None):
-
     """
     Creates a folium plot from a list of already generated feature groups,
     centered around the centroid of the center_gdf.
@@ -46,7 +44,6 @@ def make_foliumplot(feature_groups, layers_dict, center_gdf, center_crs, attr=No
 
     # CREATE MAP OBJECT
     if attr is not None:
-
         m = folium.Map(location=mycenter, zoom_start=13, tiles=None, attr=attr)
 
     else:
@@ -137,7 +134,6 @@ def make_nodefeaturegroup(gdf, mysize, mycolor, nametag, show_nodes=True):
     fg_no = folium.FeatureGroup(name=nametag, show=show_nodes)
 
     for geom in gdf["geometry"]:
-
         folium.Circle(
             location=(geom.y, geom.x),
             radius=mysize,
@@ -186,7 +182,6 @@ def make_markerfeaturegroup(gdf, nametag="Show markers", show_markers=False):
 
 
 def save_fig(fig, filepath, dpi=pdict["dpi"], plot_res=plot_res):
-
     if plot_res == "high":
         fig.savefig(filepath + ".svg", dpi=dpi)
 
@@ -227,7 +222,6 @@ def plot_grid_results(
     plot_res=plot_res,
     attr=None,
 ):
-
     """
     Make multiple choropleth maps of e.g. grid with analysis results based on a list of geodataframe columns to be plotted
     and save them in separate files
@@ -266,14 +260,12 @@ def plot_grid_results(
         assert norm_max is not None, print("Please provide a value for norm_max")
 
     for i, c in enumerate(plot_cols):
-
         fig, ax = plt.subplots(1, figsize=figsize)
 
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="3.5%", pad="1%")
 
         if use_norm is True:
-
             cbnorm = colors.Normalize(vmin=norm_min[i], vmax=norm_max[i])
 
             grid.plot(
@@ -311,7 +303,6 @@ def plot_grid_results(
 
         # add patches in grid cells with no data on edges
         if type(no_data_cols[i]) == tuple:
-
             grid[
                 (grid[no_data_cols[i][0]].isnull())
                 & (grid[no_data_cols[i][1]].isnull())
@@ -371,7 +362,6 @@ def plot_multiple_grid_results(
     norm_max=None,
     wspace=0.12,
 ):
-
     """
     Make multiple choropleth maps of e.g. grid with analysis results based on a list of geodataframe columns to be plotted
     normed to the same max value (equal color bar scales!)
@@ -415,9 +405,7 @@ def plot_multiple_grid_results(
     fig, ax = plt.subplots(1, len(plot_cols), figsize=figsize)
 
     for i, c in enumerate(plot_cols):
-
         if use_norm is True:
-
             cbnorm = colors.Normalize(vmin=norm_min, vmax=norm_max)
 
             grid.plot(
@@ -445,7 +433,6 @@ def plot_multiple_grid_results(
 
         # add patches in grid cells with no data on edges
         if type(no_data_cols[i]) == tuple:
-
             grid[
                 (grid[no_data_cols[i][0]].isnull())
                 & (grid[no_data_cols[i][1]].isnull())
@@ -486,7 +473,6 @@ def plot_multiple_grid_results(
 
 
 def compute_folium_bounds(gdf):
-
     gdf_wgs84 = gdf.to_crs("EPSG:4326")
 
     gdf_wgs84["Lat"] = gdf_wgs84.geometry.y
@@ -498,7 +484,6 @@ def compute_folium_bounds(gdf):
 
 
 def plot_saved_maps(filepaths, figsize=pdict["fsmap"], alpha=None, plot_res=plot_res):
-
     """
     Helper function for printing saved plots/maps/images (up to two maps plotted side by side)
 
@@ -516,18 +501,15 @@ def plot_saved_maps(filepaths, figsize=pdict["fsmap"], alpha=None, plot_res=plot
     )
 
     if plot_res == "low":
-
         filepaths = [f + ".png" for f in filepaths]
 
         fig = plt.figure(figsize=figsize)
 
         for i, f in enumerate(filepaths):
-
             img = plt.imread(f)
             ax = fig.add_subplot(1, 2, i + 1)
 
             if alpha is not None:
-
                 plt.imshow(img, alpha=alpha[i])
 
             else:
@@ -538,7 +520,6 @@ def plot_saved_maps(filepaths, figsize=pdict["fsmap"], alpha=None, plot_res=plot
         fig.subplots_adjust(wspace=0)
 
     elif plot_res == "high":
-
         filepaths = [f + ".svg" for f in filepaths]
 
         filepaths.reverse()
@@ -546,7 +527,6 @@ def plot_saved_maps(filepaths, figsize=pdict["fsmap"], alpha=None, plot_res=plot
         html_string = "<div class='row'></div>"
 
         for i, f in enumerate(filepaths):
-
             if alpha is None:
                 img_html = "<img src='" + f + "'style='width:49%'> </img>"
                 html_string = html_string[:17] + img_html + html_string[17:]
@@ -560,7 +540,6 @@ def plot_saved_maps(filepaths, figsize=pdict["fsmap"], alpha=None, plot_res=plot
 
 
 def compare_print_network_length(osm_length, ref_length):
-
     print(f"Length of the OSM data set: {osm_length/1000:.2f} km")
     print(f"Length of the reference data set: {ref_length/1000:.2f} km")
 
@@ -617,7 +596,6 @@ def compare_print_network_length(osm_length, ref_length):
 
 
 def print_node_sequence_diff(degree_sequence_before, degree_sequence_after, name):
-
     """
     Helper function for printing the node degree counts before and after network simplification.
 
@@ -648,7 +626,6 @@ def print_node_sequence_diff(degree_sequence_before, degree_sequence_after, name
 
 
 def print_network_densities(density_dictionary, data_label):
-
     """
     Helper function for printing the network densities
 
@@ -691,7 +668,6 @@ def make_bar_plot(
     ylim=None  # ,
     # formats=["png", "svg"],
 ):
-
     """
     Make a bar plot using matplotlib.
 
@@ -754,7 +730,6 @@ def make_bar_plot_side(
     dpi=pdict["dpi"]  # ,
     # formats=["png", "svg"],
 ):
-
     """
     Make a bar subplot using matplotlib where two datasets with corresponding values are plotted side by side.
 
@@ -807,7 +782,6 @@ def make_bar_plot_side(
     #     fig.savefig(filepath + "." + f, dpi=dpi)
 
     if plot_res == "high":
-
         fig.savefig(filepath + ".svg", dpi=dpi)
     else:
         fig.savefig(filepath + ".png", dpi=dpi)
@@ -833,7 +807,6 @@ def make_bar_subplots(
     ylim=None,
     wspace=None,
 ):
-
     """
     Make a bar plot with several subplots using matplotlib
 

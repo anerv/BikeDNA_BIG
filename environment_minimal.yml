@@ -1,4 +1,4 @@
-name: bikedna_denmark
+name: bikedna_big
 channels:
   - conda-forge
   - defaults
@@ -18,5 +18,11 @@ dependencies:
   - nbconvert
   - pyrosm 
   - pyarrow
-  - h3
-prefix: /opt/miniconda3/envs/bikedna_denmark
+  - h3-py
+prefix: /opt/miniconda3/envs/bikedna_big
+
+
+
+# conda config --prepend channels conda-forge
+# conda create -n bikedna_big --strict-channel-priority osmnx geopandas pandas networkx folium pyyaml matplotlib contextily jupyterlab haversine momepy nbconvert pyrosm pyarrow h3-py ipykernel
+# conda activate bikedna_big

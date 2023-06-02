@@ -22,6 +22,8 @@ The version of BikeDNA adapted for larger areas has 5 main adaptations:
 
 Despite these efforts, most of the notebooks can still take several hours to complete, depending on the size of the input data (testeed on macOS 13.2.1 with 2,6 GHz 6-Core Intel Core i7 and 16 GB RAM).
 
+Many of the plots were originally developed for significantly smaller geographical areas. Results might thus be better explored visually using e.g. QGIS or other tools suited for rendering large geospatial data sets.
+
 ## Conda environment
 
 Follow the [installation instructions](<https://github.com/anerv/BikeDNA#create-python-conda-environment>) for BikeDNA, but using the environment file from this repository: `environment_minimal.yml`.

@@ -89,38 +89,42 @@ segment_matches = match_func.find_matches_from_buffer(
     hausdorff_threshold=hausdorff_threshold,
 )
 
+print("Segment matches found!")
+
 matches_fp = path+f"/results/segment_matches_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
 with open(matches_fp, "wb") as f:
     pickle.dump(segment_matches, f)
 
-print("Segment matches found!")
+print("Segments matching completed, results saved.")
 
-# Summarize feature matching results
-osm_matched_ids, osm_undec = match_func.summarize_feature_matches(
-    osm_segments, segment_matches, "seg_id", "osmid", osm=True
-)
+######
 
-ref_matched_ids, ref_undec = match_func.summarize_feature_matches(
-    ref_segments, segment_matches, "seg_id_ref", "edge_id", osm=False
-)
+# # Summarize feature matching results
+# osm_matched_ids, osm_undec = match_func.summarize_feature_matches(
+#     osm_segments, segment_matches, "seg_id", "osmid", osm=True
+# )
 
-osm_matched_ids_fp = path + f"/results/osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
-ref_matched_ids_fp = path + f"/results/ref_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+# ref_matched_ids, ref_undec = match_func.summarize_feature_matches(
+#     ref_segments, segment_matches, "seg_id_ref", "edge_id", osm=False
+# )
 
-osm_undec_ids_fp = path + f"/results/osm_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
-ref_undec_ids_fp = path + f"/results/ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+# osm_matched_ids_fp = path + f"/results/osm_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+# ref_matched_ids_fp = path + f"/results/ref_matched_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
-with open(osm_matched_ids_fp, "wb") as fp:   
-    pickle.dump(osm_matched_ids, fp) 
+# osm_undec_ids_fp = path + f"/results/osm_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
+# ref_undec_ids_fp = path + f"/results/ref_undec_ids_{buffer_dist}_{hausdorff_threshold}_{angular_threshold}.pickle"
 
-with open(ref_matched_ids_fp, "wb") as fp:   
-    pickle.dump(ref_matched_ids, fp) 
+# with open(osm_matched_ids_fp, "wb") as fp:   
+#     pickle.dump(osm_matched_ids, fp) 
 
-with open(osm_undec_ids_fp, "wb") as fp:   
-    pickle.dump(osm_undec, fp) 
+# with open(ref_matched_ids_fp, "wb") as fp:   
+#     pickle.dump(ref_matched_ids, fp) 
 
-with open(ref_undec_ids_fp, "wb") as fp:   
-    pickle.dump(ref_undec, fp)
+# with open(osm_undec_ids_fp, "wb") as fp:   
+#     pickle.dump(osm_undec, fp) 
 
-print("Summary of segments matches completed. Ids of matched features have been saved.")
+# with open(ref_undec_ids_fp, "wb") as fp:   
+#     pickle.dump(ref_undec, fp)
+
+# print("Summary of segments matches completed. Ids of matched features have been saved.")

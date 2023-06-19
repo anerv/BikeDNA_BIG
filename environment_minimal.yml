@@ -24,5 +24,5 @@ prefix: /opt/miniconda3/envs/bikedna_big
 
 
 # conda config --prepend channels conda-forge
-# conda create -n bikedna_big --strict-channel-priority osmnx geopandas pandas networkx folium pyyaml matplotlib contextily jupyterlab haversine momepy nbconvert pyrosm pyarrow h3-py ipykernel
+# conda create -n bikedna_big --strict-channel-priority osmnx geopandas pandas=1.5.3 networkx folium pyyaml matplotlib contextily jupyterlab haversine momepy nbconvert pyrosm pyarrow h3-py ipykernel
 # conda activate bikedna_big

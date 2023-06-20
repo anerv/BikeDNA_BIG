@@ -31,22 +31,11 @@ mpl.rcParams["ytick.labelsize"] = 9
 mpl.rcParams["hatch.linewidth"] = 0.5
 
 
-def col_to_rgb(col):
-    """Return list of 3 rgb values from col (can be hex, name,..)
-    Example: colname_to_rgb(purple)
-    """
-    import matplotlib.colors as mcols
+def convert_cmap_to_hex(cmap_name):
 
-    return list(mcols.to_rgb(col))
+    #cmap = cm.get_cmap(cmap_name)
 
-
-def convert_cmap_to_hex(cmap_name, n=None):
-
-    if n is None:
-        cmap = cm.get_cmap(cmap_name)
-
-    else:
-        cmap = cm.get_cmap(cmap_name, n)
+    cmap = mpl.colormaps[cmap_name]
 
     hex_codes = []
 
@@ -56,32 +45,25 @@ def convert_cmap_to_hex(cmap_name, n=None):
 
     return hex_codes
 
-
 # Exact colors used
-pink_green_cmap = convert_cmap_to_hex("PiYG", 10)
-pink = pink_green_cmap[1]
-green = pink_green_cmap[-2]
+pink = "#c82582"
+green = "#539725"
 
-orange_cmap = convert_cmap_to_hex("Oranges", 10)
-orange = orange_cmap[5]
-light_orange = orange_cmap[4]
-dark_orange = orange_cmap[8]
+orange = "#f87d2a"
+light_orange = "#fd9c51"
+dark_orange = "#a23403"
 
-purple_cmap = convert_cmap_to_hex("Purples", 10)
-purple = purple_cmap[6]
-light_purple = purple_cmap[4]
-dark_purple = purple_cmap[8]
+purple = "#796eb2"
+light_purple = "#abaad1"
+dark_purple = "#52238d"
 
+blue = "#3787c0"
+light_blue = "#82badb"
+dark_blue = "#084d97"
 
-blue_cmap = convert_cmap_to_hex("Blues", 10)
-blue = blue_cmap[6]
-light_blue = blue_cmap[4]
-dark_blue = blue_cmap[8]
-
-red_cmap = convert_cmap_to_hex("Reds", 10)
-red = red_cmap[6]
-light_red = red_cmap[5]
-dark_red = red_cmap[8]
+red = "#e32f27"
+light_red = "#f6553d"
+dark_red = "#9e0d14"
 
 
 # pdict for plotting styles
@@ -94,14 +76,14 @@ pdict = {
     "osm_base": purple,  # base: for nodes and edges
     "osm_emp": dark_purple,  # emphasis: for dangling nodes, component issues, etc.
     "osm_emp2": light_purple,  # emphasis 2: for 2-fold distinctions e.g. over/undershoots
-    "osm_contrast": convert_cmap_to_hex("winter", 10)[1],
-    "osm_contrast2": convert_cmap_to_hex("winter", 10)[-1],
+    "osm_contrast": '#001cf1',
+    "osm_contrast2": '#00ff80',
     # reference network in geopandas and folium plots
     "ref_base": orange,  # base: for nodes and edges
     "ref_emp": dark_orange,  # emphasis: for dangling nodes, component issues, etc.
     "ref_emp2": light_orange,  # emphasis 2: for 2-fold distinctions e.g. over/undershoots
-    "ref_contrast": convert_cmap_to_hex("RdYlBu", 10)[1],
-    "ref_contrast2": convert_cmap_to_hex("autumn", 10)[-2],
+    "ref_contrast": '#da372a',
+    "ref_contrast2": '#ffe300',
     # colormaps for grid cell plots
     "pos": "Blues",  # Positive values (but not percentages)
     "neg": "Reds",  # Negative/Missing/Unmatched values

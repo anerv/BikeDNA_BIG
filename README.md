@@ -2,7 +2,7 @@
 
 # BikeDNA: Bicycle Infrastructure Data & Network Assessment
 
-This is the repository of **a version of BikeDNA optimized for dealing with analysis of large areas**. BikeDNa is a tool for assessing the quality of [OpenStreetMap (OSM)](https://www.openstreetmap.org/) and other bicycle infrastructure data sets in a reproducible way. It provides planners, researchers, data maintainers, cycling advocates, and others who work with bicycle networks a detailed, informed overview of data quality in a given area.
+This is the repository of a **version of BikeDNA optimized for dealing with analysis of large areas/large data sets**. BikeDNA is a tool for assessing the quality of [OpenStreetMap (OSM)](https://www.openstreetmap.org/) and other bicycle infrastructure data sets in a reproducible way. It provides planners, researchers, data maintainers, cycling advocates, and others who work with bicycle networks a detailed, informed overview of data quality in a given area.
 
 The original version of BikeDNA lives here: <https://github.com/anerv/BikeDNA>
 

@@ -1427,7 +1427,7 @@ assert k[-3] == 1
 
 assert len(edges) == len(edges_test)
 
-# Incorrect, key values should be modified
+# Incorrect key values should be modified
 # Test that (u,v) is not treated as equal to (v,u)
 
 u = [1, 2, 3, 4, 2, 1, 2]

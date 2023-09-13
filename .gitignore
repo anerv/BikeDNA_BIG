@@ -1,13 +1,15 @@
-*.osm.pbf
-*.parquet
+
 *.DS_Store
 *.__pycache__
 *.pyc
-*.gpkg
-*.graphml
-*.gpkg-journal
+# *.gpkg
+# *.graphml
+# *.gpkg-journal
+# *.osm.pbf
+# *.parquet
 
-data/study_area_polygon/dk/study_area_polygon.gpkg
+# data/study_area_polygon/dk/study_area_polygon.gpkg
+
 
 src/__pycache__/simplification_functions.cpython-310.pyc
 src/__pycache__/__init__.cpython-310.pyc
@@ -32,3 +34,8 @@ results/COMPARE/dk/maps_static/*
 results/COMPARE/dk/data/*
 results/COMPARE/dk/plots/*
 feature_matching_hpc/scripts/src/matching_functions.py
+
+data/OSM/dk/processed/*
+data/REFERENCE/dk/processed/*
+data/COMPARE/dk/processed/*
+feature_matching_hpc/dk/data/*

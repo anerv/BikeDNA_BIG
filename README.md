@@ -7,7 +7,7 @@ This is the repository of a **version of BikeDNA optimized for dealing with anal
 The original version of BikeDNA lives here: <https://github.com/anerv/BikeDNA>
 
 For an example, see the branch 'denmark_analysis', which contains notebooks with an analysis of bicycle infrastructure data from OpenStreetMap and GeoDanmark for all of Denmark.
-Due to limitations on file sizes, the branch only contains the notebooks and not input data or exported results. For a full reproducible setup, see 10.5281/zenodo.8340383.
+Due to limitations on file sizes, the branch only contains the notebooks and not input data or exported results. For a full reproducible setup, see [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8340383.svg)](https://doi.org/10.5281/zenodo.8340383).
 
 For further details and general instructions, see the [README for the original version](https://github.com/anerv/BikeDNA/blob/main/README.md).
 

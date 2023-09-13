@@ -6,7 +6,8 @@ This is the repository of a **version of BikeDNA optimized for dealing with anal
 
 The original version of BikeDNA lives here: <https://github.com/anerv/BikeDNA>
 
-The notebooks on this repository contains an analysis of bicycle infrastructure data from OpenStreetMap and GeoDanmark for all of Denmark, but can easily be converted to analyze other areas and data sets.
+For an example, see the branch 'denmark_analysis', which contains notebooks with an analysis of bicycle infrastructure data from OpenStreetMap and GeoDanmark for all of Denmark.
+Due to limitations on file sizes, the branch only contains the notebooks and not input data or exported results. To reproduce the analysis or examine exported results, see []().
 
 For further details and general instructions, see the [README for the original version](https://github.com/anerv/BikeDNA/blob/main/README.md).
 

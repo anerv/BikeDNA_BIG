@@ -7,7 +7,7 @@ This is the repository of a **version of BikeDNA optimized for dealing with anal
 The original version of BikeDNA lives here: <https://github.com/anerv/BikeDNA>
 
 For an example, see the branch 'denmark_analysis', which contains notebooks with an analysis of bicycle infrastructure data from OpenStreetMap and GeoDanmark for all of Denmark.
-Due to limitations on file sizes, the branch only contains the notebooks and not input data or exported results. To reproduce the analysis or examine exported results, see []().
+Due to limitations on file sizes, the branch only contains the notebooks and not input data or exported results. To reproduce the analysis or examine exported results, see 10.5281/zenodo.8340272.
 
 For further details and general instructions, see the [README for the original version](https://github.com/anerv/BikeDNA/blob/main/README.md).
 
@@ -48,7 +48,7 @@ License: [Open Data Commons Open Database License](https://opendatacommons.org/l
 ### GeoDanmark
 
 Contains data from GeoDanmark (retrieved spring 2022)
-© SDFE (Styrelsen for Dataforsyning og Effektivisering og Danske kommuner)  
+© SDFI (Styrelsen for Dataforsyning og Infrastruktur og Danske kommuner)  
 License: [GeoDanmark](https://www.geodanmark.dk/wp-content/uploads/2022/08/Vilkaar-for-brug-af-frie-geografiske-data_GeoDanmark-grunddata-august-2022.pdf)
 
 ## Credits

@@ -49,16 +49,24 @@ simplify_tags_queries:
       - "highway == 'path' & bicycle == 'designated' & (oneway !='no' or oneway_bicycle !='no')"
   
     "centerline_true_bidirectional_true": 
+    # Only mapped in left side, but explicitly tagged as one way no
       - "cycleway_left in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (cycleway_right in ['no','none','separate'] or cycleway_right.isnull() or cycleway_right not in ['lane','track','opposite_lane','opposite_track','designated','crossing']) and oneway_bicycle =='no'"
+    # Only mapped in right side, but explicitly tagged as one way no
       - "cycleway_right in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (cycleway_left in ['no','none','separate'] or cycleway_left.isnull() or cycleway_left not in ['lane','track','opposite_lane','opposite_track','designated','crossing']) and oneway_bicycle =='no'"
+    # Just mapped as cycleway and either explicitly mapped as oneway no or no info on it being oneway
       - "cycleway in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (oneway_bicycle == 'no' or oneway_bicycle.isnull())"
+    # Mapped as having infrastructure on both sides and either explicitly mapped as oneway no or no info on it being oneway
       - "cycleway_both in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (oneway_bicycle == 'no' or oneway_bicycle.isnull())"
       - "cycleway_left in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and cycleway_right in ['lane','track','opposite_lane','opposite_track','designated','crossing']"
 
     "centerline_true_bidirectional_false":
+    # Only mapped in left side and oneway bicycle is not no
       - "cycleway_left in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (cycleway_right in ['no','none','separate'] or cycleway_right.isnull()  or cycleway_right not in ['lane','track','opposite_lane','opposite_track','designated','crossing']) and oneway_bicycle !='no'"
+    # Only mapped in right side and oneway bicycle is not no
       - "cycleway_right in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and (cycleway_left in ['no','none','separate'] or cycleway_left.isnull()  or cycleway_left not in ['lane','track','opposite_lane','opposite_track','designated','crossing']) and oneway_bicycle != 'no'"
+    # No info on sides and oneway is yes
       - "cycleway in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and oneway_bicycle == 'yes'"
+    # Both sides mapped but oneway is yes
       - "cycleway_both in ['lane','track','opposite_lane','opposite_track','designated','crossing'] and oneway_bicycle == 'yes'"
   
 
